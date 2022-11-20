@@ -171,20 +171,11 @@ All the data that comes from the MQTT goes also to the Tulip database where it g
 > Figure 10: Tulip table
 
 #### Trigger
-The trigger to 
+The sensor is now placed at 37 mm from the bucket. If the bucket is removed then the value will go over that. My trigger is: if distance is bigger than 50 mm then turn on the red light. The next step is to make a trigger to send automatically an picking order to the warehouse.
+![red ligth](https://user-images.githubusercontent.com/118463424/202927098-6deb507c-a38a-4213-bdf3-4386ac251881.jpg)
+> Figure 11: red light
 
-Describe the presentation part. How is the dashboard built? How long is the data preserved in the database?
+### Finalizing the design
+The final result of my project can be found if you [download this video](https://github.com/leanderkoenders/IOTsensor/blob/main/Media1.mp4). Here you can see how the whole concept works. 
 
- Provide visual examples on how the visualisation/UI looks. Pictures are needed.
- How often is data saved in the database. What are the design choices?
- Explain your choice of database. What kind of database. Motivate.
- Automation/triggers of the data.
- Alerting services. Are any used, what are the options and how are they in that case included.
-Finalizing the design
-Show the final results of your project. Give your final thoughts on how you think the project went. What could have been done in an other way, or even better? Pictures are nice!
-
- Show final results of the project
- Pictures
- 
- 
-  
+Before I started I didn´t had any knowledge of coding or node red , during this project I have learned how to code and how to use node red. The difficult part was that there was not so much time (specially because it was done mostly next to work). This resulted in not the best solutions, like the sensor doesn´t have a casing. If this project will be continued then there most be a case to protect the sensor and the ESP32. 
