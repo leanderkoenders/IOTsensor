@@ -155,12 +155,23 @@ First you need to create an app in Tulip. If you purchased a license then you ca
 
 ![Node red](https://user-images.githubusercontent.com/118463424/202926579-2831c497-0eb8-41ba-be16-db86296d64ad.jpg)
 > Figure 7
-Then you 
 
+The subscribtion to MQTT in node red looks like the folling figure:
 
 ![MQTT in node red](https://user-images.githubusercontent.com/118463424/202926505-2785c147-8b0f-4eb8-be8f-a471a85bbd1b.jpg)
+> Figure 8
+
+The connection to the Tulip "machine" is through an build-in Node-Red node:
 
 ![Tulip node red](https://user-images.githubusercontent.com/118463424/202926513-11549983-e4e5-43fd-82b0-bd608ee2f00f.jpg)
+> Figure 9
+
+All the data that comes from the MQTT goes also to the Tulip database where it gets stored forever, although I can make a trigger that it deletes the value if the previous one was the same so it doesn´t fill the database with a lot of the same data. 
+![Tulip table](https://user-images.githubusercontent.com/118463424/202926810-99fc6212-d8f1-4ed2-b30e-d27cec7a672d.png)
+> Figure 10: Tulip table
+
+#### Trigger
+The trigger to 
 
 Describe the presentation part. How is the dashboard built? How long is the data preserved in the database?
 
