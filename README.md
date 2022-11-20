@@ -74,7 +74,17 @@ The intention of this project was focussed on replanishing the workstation with 
 ### The code
 When the ESP32 is connected to the power supply the first thing it does it connecting to the Wi-Fi with the folling code:
 ```
-Test
+def connect():
+    import network
+    sta_if = network.WLAN(network.STA_IF)
+    if not sta_if.isconnected():
+        sta_if.active(True)
+        sta_if.connect('network', 'password')
+        while not sta_if.isconnected():
+            pass # wait till connection
+    print('network config:', sta_if.ifconfig())
+    
+connect()
 
 ```
 
