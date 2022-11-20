@@ -39,9 +39,11 @@ First download the MicroPython firmware (esp32-20220618-v1.19.1.bin). After the 
 Before the flashing the mircoPython firmware you need to erase the ESP32 flash memory. While holding down the boot button you need to runthe following command: 
 python -m esptool –-chip esp32 erase_flash.
 When it was done you need to flash the MicroPython firmware to the ESP32. 
-First you need to download 
-While holding down the boot button I runned the following command:
+For the following step you need to replace in the code my port (COM4) with your own port. 
+Then you need to hold down the boot butoon while you run the folling command:
 python -m esptool --chip esp32 --port COM4 write_flash -z 0x1000 esp32-20220618-v1.19.1.bin
+#### Tulip
+
 
 
 
