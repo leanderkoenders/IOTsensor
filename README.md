@@ -15,14 +15,22 @@ At my company (virtual) there was a need to see if a workstation needed to be re
 With this project I want to give customers of us the option of having a workstation that can give a signal to the warehouse that it needs materials without the operator having to do something. 
 
 ### Material
-For the project I have decided to work with the ESP32 (see fig x), the reason behind it is because it has already Wi-Fi build in what is important for this project. The sensor I used for this project is a Ultrasonic Sensor HC-SR04 (see fig x). I also have a LED-display but it doesn´t add any value to my project, I just wanted to learn how to set that up (see fig x)
+For the project I have decided to work with the ESP32 (see fig 1), the reason behind it is because it has already Wi-Fi build in what is important for this project. The sensor I used for this project is a Ultrasonic Sensor HC-SR04 (see fig 2). I also have a OLED-display but it doesn´t add any value to my project, I just wanted to learn how to set that up (see fig 3)
 
-> Example:
->| IoT device | From this website         | Price |
+![ESP32](https://user-images.githubusercontent.com/118463424/202925948-3326b510-f1cc-436d-bcaa-3ed643a0c0bb.jpg)
+> Figure 1: ESP32
+
+![HC-SR04-Ultrasonic-Sensor-Module-Distance-Measurement-Component-Part-Front (1)](https://user-images.githubusercontent.com/118463424/202926055-d742bdb8-a13b-4761-ba1b-3cfad25aaacf.jpg)
+> Figure 2: Ultrasonic Sensor HC-SR04
+
+![OLED](https://user-images.githubusercontent.com/118463424/202926154-cb18c1b0-b4c2-49c2-9267-694b5cc0d37c.jpg)
+> Figure 3: OLED-display
+
+>| IoT device | Website         | Price |
 >| --------- | ---------------- | -----------|
 >| ESP32     | [Amazon](https://www.amazon.se/AZDelivery-ESP32-NodeMCU-Development-Efterf%C3%B6ljarmodul/dp/B07Z83MF5W/ref=asc_df_B07Z83MF5W/?tag=shpngadsglede-21&linkCode=df0&hvadid=476551177109&hvpos=&hvnetw=g&hvrand=11855222708416699519&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062355&hvtargid=pla-898234157885&psc=1)    |  125 kr    |
 >| Ultrasonic Sensor HC-SR04   |  [Elfa](https://www.elfa.se/en/hc-sr04-ultrasonic-distance-sensor-5v-adafruit-3942/p/30139186?ext_cid=shgooaqsesv-Shopping-PerformanceMax-CSS&&cq_src=google_ads&cq_cmp=18208288444&cq_con=&cq_term=&cq_med=pla&cq_plac=&cq_net=x&cq_pos=&cq_plt=gp&gclsrc=aw.ds&gclid=Cj0KCQiA99ybBhD9ARIsALvZavXpKyaKploFa4YCGR7lEYw9_48EFfpWBXGeCyqkvJlPmJfkQlxNtf4aAglyEALw_wcB&gclsrc=aw.ds)  |   50 kr     |
->| LED-display |[Amazon](https://www.amazon.se/ZHITING-seriell-LED-displaymodul-hallon-Arduino/dp/B08GM1XW31/ref=sr_1_41?crid=WQT82A1ZSX6F&keywords=lcd+oled+display&qid=1668767941&sprefix=lcd+oled+display%2Caps%2C72&sr=8-41)          |    40 kr |
+>| OLED-display |[Amazon](https://www.amazon.se/ZHITING-seriell-LED-displaymodul-hallon-Arduino/dp/B08GM1XW31/ref=sr_1_41?crid=WQT82A1ZSX6F&keywords=lcd+oled+display&qid=1668767941&sprefix=lcd+oled+display%2Caps%2C72&sr=8-41)          |    40 kr |
 > 
 
 ### Environment setup
@@ -61,8 +69,7 @@ Tulip is a software where you can make apps that companies use in the facotry th
  All the devices are connected in the following figure:
  
  ![screenshot of schema](https://user-images.githubusercontent.com/118463424/202922113-1a82c0b5-393e-4d4b-a421-85e87eba3f38.jpg)
-
-Figure x
+> Figure 4: Wire connections
  
  The ESP32 is in the test set up powered by a powerbank. But because the powerbank had only a lifetime of 8 hours I decided that the device has to get the power supply of the workstation. This because otherwise someone is changing the battery every 8 hours and I wanted to have fixed instalation. The next plan is to scale from one sensor to 10 sensors at the workstation to see which of the positions need new material. Because there are a lot of pins not in use yet where we can connect sensors to. 
  
@@ -134,24 +141,13 @@ while True:
 
 ### The physical network layer
 The ESP32 is connected to the Wi-Fi of our office and sends every 10 seconds a signal out. It subsribes to the MQTT (Message Queuing Telemetry Transport) broker we have at our server. The reason for this is because the Tulip software also needs to use Wi-Fi so I know that there is always good Wi-Fi around. 
+
 ![Mqtt](https://user-images.githubusercontent.com/118463424/202925467-e9400367-852c-4bb2-8074-39745f1f1ddd.jpg)
+> Figure 5
+
 The flow of the whole process looks like the folling one: 
 ![Flow](https://user-images.githubusercontent.com/118463424/202925803-9666755a-99c2-4112-8fe2-8c66838cd364.jpg)
-
-
-
-
-
-
-How is the data transmitted to the internet or local server? Describe the package format. All the different steps that are needed in getting the data to your end-point. Explain both the code and choice of wireless protocols.
-
- How often is the data sent?
- Which wireless protocols did you use (WiFi, LoRa, etc ...)?
- Which transport protocols were used (MQTT, webhook, etc ...)
- Elaborate on the design choices regarding data transmission and wireless protocols. That is how your choices affect the device range and battery consumption.
- What alternatives did you evaluate?
- What are the design limitations of your choices?
-
+> Figure 6
 
 ### Visualisation and user interface
 Describe the presentation part. How is the dashboard built? How long is the data preserved in the database?
