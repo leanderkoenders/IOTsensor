@@ -133,6 +133,16 @@ while True:
   The distance gets measured and gets send to the MQTT and to the OLED display. On the OLED display is a small graph where if there is a fault value (-1) _ gets displayed and if the distance is between 0 and 150 there will be a . displayed. And if the distance is bigger then : will pop up on the display. 
 
 ### The physical network layer
+The ESP32 is connected to the Wi-Fi of our office and sends every 10 seconds a signal out. It subsribes to the MQTT (Message Queuing Telemetry Transport) broker we have at our server. The reason for this is because the Tulip software also needs to use Wi-Fi so I know that there is always good Wi-Fi around. 
+![Mqtt](https://user-images.githubusercontent.com/118463424/202925467-e9400367-852c-4bb2-8074-39745f1f1ddd.jpg)
+The flow of the whole process looks like the folling one: 
+![Flow](https://user-images.githubusercontent.com/118463424/202925803-9666755a-99c2-4112-8fe2-8c66838cd364.jpg)
+
+
+
+
+
+
 How is the data transmitted to the internet or local server? Describe the package format. All the different steps that are needed in getting the data to your end-point. Explain both the code and choice of wireless protocols.
 
  How often is the data sent?
