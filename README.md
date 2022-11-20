@@ -15,27 +15,28 @@ At my company (virtual) there was a need to see if a workstation needed to be re
 With this project I want to give customers of us the option of having a workstation that can give a signal to the warehouse that it needs materials without the operator having to do something. 
 
 ### Material
-For the project I have decided to work with the ESP32 (see fig x) , the reason behind it is because it has already Wi-Fi build in what is important for this project. The sensor I used for this project is a Ultrasonic Sensor HC-SR04 (see fig x).  
+For the project I have decided to work with the ESP32 (see fig x), the reason behind it is because it has already Wi-Fi build in what is important for this project. The sensor I used for this project is a Ultrasonic Sensor HC-SR04 (see fig x). I also have a LED-display but it doesn´t add any value to my project, I just wanted to learn how to set that up (see fig x)
 
 > Example:
 >| IoT device | From this website         |
 >| --------- | ---------------- |
 >| ESP32     | xx          |
 >| Ultrasonic Sensor HC-SR04   | xx |
->| 
+>| LED-display |xx|
+> 
 
 ### Environment setup
 I choose for Thonney IDE because I followed randromnerdtutorials to understand more about how to program EPS32 and they recommended Thonney IDE.  
 I connect the EPS32 to the computer with a USB cable and after I write the code I can save it on the EPS32.
 Here below are the steps you need to follow to set up every thing.
 #### Installing
-First step was to install Thonney 4.0.1. After that installation of Python, when that was finished I installed the lastest stable esptool.py with the comand prompt: Pip install esptool 
+First step was to install Thonney 4.0.1. After that installation of Python, when that was finished I installed the lattest stable esptool.py with the comand prompt: Pip install esptool 
 After that you also need to install the setuptools, there for you use command: 
 pip install setuptools
 At last one for this I filled in:
 python -m esptool
 #### MicroPython 
-First download the MicroPython firmware (esp32-20220618-v1.19.1.bin). After the downloading you need to find the serial port number, in my case I didn’t saw a COM port availbe what meant that I didn’t had a USB driver so I needed to install CP210x Universal windows driver. 
+First download the MicroPython firmware (esp32-20220618-v1.19.1.bin). After the downloading you need to find the serial port number, in my case I didn’t saw a COM port available what meant that I didn’t had a USB driver so I needed to install CP210x Universal windows driver. 
 Before the flashing the mircoPython firmware you need to erase the ESP32 flash memory. While holding down the boot button you need to runthe following command: 
 python -m esptool –-chip esp32 erase_flash.
 When it was done you need to flash the MicroPython firmware to the ESP32. 
@@ -43,10 +44,7 @@ For the following step you need to replace in the code my port (COM4) with your 
 Then you need to hold down the boot butoon while you run the folling command:
 python -m esptool --chip esp32 --port COM4 write_flash -z 0x1000 esp32-20220618-v1.19.1.bin
 #### Tulip
-
-
-
-
+Tulip is a software where you can make apps that companies use in the facotry think about work instructions, machine monitoring, takt time, ect. You need to have a licence to have access to the tulip enviroment. If you bought the licenence then you need to install the Tulip Player and run the following app: Sensor. 
 
 ### Putting everything together
  Circuit diagram (can be hand drawn) (Fritzing, Tinkercad, etc.)
@@ -100,6 +98,63 @@ Show the final results of your project. Give your final thoughts on how you thin
 
  Show final results of the project
  Pictures
- *Video presentation
+ 
+ 
+ 
+ # main code
+from machine import Pin, I2C
+import ssd1306
+from hcsr04 import HCSR04
+from time import sleep
+from umqtt.simple import MQTTClient
 
-![image](https://user-images.githubusercontent.com/118463424/202917934-cea43ac0-efc6-45a3-82ef-af2057531f77.png)
+#Mqtt
+CLIENT_NAME = 'leander'
+BROKER_ADDR = '172.16.2.7'
+mqttc = MQTTClient(CLIENT_NAME, BROKER_ADDR, keepalive=60)
+mqttc.connect()
+
+# button setup
+btn = Pin(0)
+BTN_TOPIC = 'Office/workstation/ONE/distance'
+
+
+# ESP32 Pin assignment 
+i2c = I2C(scl=Pin(22), sda=Pin(21))
+sensor = HCSR04(trigger_pin=5, echo_pin=18, echo_timeout_us=10000)
+
+# ESP8266 Pin assignment
+#i2c = I2C(scl=Pin(5), sda=Pin(4))
+#sensor = HCSR04(trigger_pin=12, echo_pin=14, echo_timeout_us=10000)
+
+oled_width = 128
+oled_height = 64
+oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+graph = ""
+
+while True:
+  oled.fill(0)
+  
+  #oled.show()
+  distance = sensor.distance_mm()
+  print('Distance:', (distance), 'mm')
+  mqttc.publish( BTN_TOPIC, str(distance).encode() )
+  if distance == -1:
+      graph += "_"
+  elif distance < 150:
+      graph += "."
+  else:
+      graph += ":"
+ 
+  last_chars = graph[-15:]
+  print(graph)
+  
+  oled.text("Distance (mm)", 0, 15)
+  oled.text(str(distance), 0, 35)
+  oled.text(last_chars, 0, 55)
+  oled.show()
+  sleep(10)
+  
+  
+  
+  
