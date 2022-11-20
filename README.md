@@ -30,10 +30,16 @@ I choose for Thonney IDE because I followed randromnerdtutorials to understand m
 I connect the EPS32 to the computer with a USB cable and after I write the code I can save it on the EPS32.
 Here below are the steps you need to follow to set up every thing.
 #### Installing
-First step was to install Thonney 4.0.1. After that installation of Python, when that was finished I installed the lattest stable esptool.py with the comand prompt: Pip install esptool 
+First step was to install Thonney 4.0.1. After that installation of Python, when that was finished I installed the lattest stable esptool.py with the comand prompt:
+
+Pip install esptool 
+
 After that you also need to install the setuptools, there for you use command: 
+
 pip install setuptools
+
 At last one for this I filled in:
+
 python -m esptool
 #### MicroPython 
 First download the MicroPython firmware (esp32-20220618-v1.19.1.bin). After the downloading you need to find the serial port number, in my case I didn’t saw a COM port available what meant that I didn’t had a USB driver so I needed to install CP210x Universal windows driver. 
