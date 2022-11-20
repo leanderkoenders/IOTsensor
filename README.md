@@ -24,4 +24,17 @@ For the project I have decided to work with the ESP32 (see fig x) , the reason b
 >| Ultrasonic Sensor HC-SR04   | jolly good idea? |
 >| 
 
-### 
+### Environment setup
+I choose for Thonney IDE because I followed randromnerdtutorials to understand more about how to program EPS32 and they recommended Thonney IDE.  
+I connect the EPS32 to the computer with a USB cable and after I write the code I can save it on the EPS32.
+
+
+Steps that you needed to do for your computer. Instalation of drivers, etc. 
+First step was to install Thonney 4.0.1. After that installation of Python, when that was finished I installed the lastest stable esptool.py with pip. 
+Pip install esptool 
+I also needed to install the setuptools: pip install setuptools
+At last one for this I filled in python -m esptool
+Then I downloaded the MicroPython firmware (esp32-20220618-v1.19.1.bin). After the downloading I needed to find the serial port number but I didn’t saw a COM port availbe what meant that I didn’t had a USB driver so I needed to install CP210x Universal windows driver. 
+Before the flashing the mircoPython firmware I needed to erase the ESP32 flash memory. While holding down the boot button. I runned the following command: python -m esptool –-chip esp32 erase_flash. When it was done -> flashing MicroPython firmware to the ESP32. 
+While holding down the boot button I runned the following command:  python -m esptool --chip esp32 --port COM4 write_flash -z 0x1000 esp32-20220618-v1.19.1.bin
+
