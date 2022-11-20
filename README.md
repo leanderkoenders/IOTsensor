@@ -130,21 +130,7 @@ while True:
   sleep(10)
   
   ```
-  
-
-
-
-Import core functions of your code here, and don't forget to explain what you have done. Do not put too much code here, focus on the core functionalities. Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks? Or, are you checking if the value is reasonable etc. Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
-
-import this as that
-
-def my_cool_function():
-    print('not much here')
-
-s.send(package)
-
-# Explain your code!
-
+  The distance gets measured and gets send to the MQTT and to the OLED display. On the OLED display is a small graph where if there is a fault value (-1) _ gets displayed and if the distance is between 0 and 150 there will be a . displayed. And if the distance is bigger then : will pop up on the display. 
 
 ### The physical network layer
 How is the data transmitted to the internet or local server? Describe the package format. All the different steps that are needed in getting the data to your end-point. Explain both the code and choice of wireless protocols.
