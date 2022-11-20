@@ -47,16 +47,18 @@ python -m esptool --chip esp32 --port COM4 write_flash -z 0x1000 esp32-20220618-
 Tulip is a software where you can make apps that companies use in the facotry think about work instructions, machine monitoring, takt time, ect. You need to have a licence to have access to the tulip enviroment. If you bought the licenence then you need to install the Tulip Player and run the following app: Sensor. 
 
 ### Putting everything together
- Circuit diagram (can be hand drawn) (Fritzing, Tinkercad, etc.)
+ All the devices are connected in the following figure:
  
  ![screenshot of schema](https://user-images.githubusercontent.com/118463424/202922113-1a82c0b5-393e-4d4b-a421-85e87eba3f38.jpg)
-
- Electrical calculations
- Limitations of hardware depending on design choices.
- Discussion about a way forward - is it possible to scale?
+ Figure x
  
+ The ESP32 is in the test set up powered by a powerbank. But because the powerbank had only a lifetime of 8 hours I decided that the device has to get the power supply of the workstation. This because otherwise someone is changing the battery every 8 hours and I wanted to have fixed instalation. The next plan is to scale from one sensor to 10 sensors at the workstation to see which of the positions need new material. Because there are a lot of pins not in use yet where we can connect sensors to. 
  
 ### Platforms and infrastructure
+Like discribed earlier the company where I work for (Virtual manufacturing) wanted to connect the sensor to Tulip. Tulip is an software platform where you can build apps. In my case the sensor is connected to an app that gives a signal to the light tower on top of the workstation to turn red. 
+The platform is cloud based and it is an paid subscription (if you want to have one license it cost about 24000 sek yearly). It is not suitable if you want to use the platform to connect it with the sensor because it is a lot of money. 
+A different 
+
 Describe your choice of platform(s). You need to describe how the IoT-platform works, and also the reasoning and motivation about your choices. Have you developed your own platform, or used
 
 Is your platform based on a local installation or a cloud? Do you plan to use a paid subscription or a free? Describe the different alternatives on going forward if you want to scale your idea.
