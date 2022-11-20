@@ -15,7 +15,7 @@ At my company (virtual) there was a need to see if a workstation needed to be re
 With this project I want to give customers of us the option of having a workstation that can give a signal to the warehouse that it needs materials without the operator having to do something. 
 
 ### Material
-For the project I have decided to work with the ESP32 (see fig 1), the reason behind it is because it has already Wi-Fi build in what is important for this project. The sensor I used for this project is a Ultrasonic Sensor HC-SR04 (see fig 2). I also have a OLED-display but it doesn´t add any value to my project, I just wanted to learn how to set that up (see fig 3)
+For the project I have decided to work with the ESP32 (see fig 1), the reason behind it is because it has already Wi-Fi build in what is important for this project. The sensor I used for this project is a Ultrasonic Sensor HC-SR04 (see fig 2). I also have a OLED-display but it doesn´t add any value to my project, I just wanted to learn how to set that up (see fig 3).
 
 ![ESP32](https://user-images.githubusercontent.com/118463424/202925948-3326b510-f1cc-436d-bcaa-3ed643a0c0bb.jpg)
 > Figure 1: ESP32
@@ -178,4 +178,6 @@ The sensor is now placed at 37 mm from the bucket. If the bucket is removed then
 ### Finalizing the design
 The final result of my project can be found if you [download this video](https://github.com/leanderkoenders/IOTsensor/blob/main/Media1.mp4). Here you can see how the whole concept works. 
 
-Before I started I didn´t had any knowledge of coding or node red , during this project I have learned how to code and how to use node red. The difficult part was that there was not so much time (specially because it was done mostly next to work). This resulted in not the best solutions, like the sensor doesn´t have a casing. If this project will be continued then there most be a case to protect the sensor and the ESP32. 
+Before I started I didn´t had any knowledge of coding or node red , during this project I have learned how to code and how to use node red. The difficult part was that there was not so much time (specially because it was done mostly next to work). This resulted in not the best solutions, like the sensor doesn´t have a casing. the project wil be continued, or in low pace when there is time left, or in high pace when there is a customer who has the need of a sensor on a workstation to see when it needs new materials. 
+
+All in the end I am happy with the result I have produced and I think I can continue building on this in the future.
