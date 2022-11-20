@@ -48,6 +48,9 @@ Tulip is a software where you can make apps that companies use in the facotry th
 
 ### Putting everything together
  Circuit diagram (can be hand drawn) (Fritzing, Tinkercad, etc.)
+ 
+ ![screenshot of schema](https://user-images.githubusercontent.com/118463424/202922113-1a82c0b5-393e-4d4b-a421-85e87eba3f38.jpg)
+
  Electrical calculations
  Limitations of hardware depending on design choices.
  Discussion about a way forward - is it possible to scale?
