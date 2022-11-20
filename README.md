@@ -35,3 +35,58 @@ Then I downloaded the MicroPython firmware (esp32-20220618-v1.19.1.bin). After t
 Before the flashing the mircoPython firmware I needed to erase the ESP32 flash memory. While holding down the boot button. I runned the following command: python -m esptool –-chip esp32 erase_flash. When it was done -> flashing MicroPython firmware to the ESP32. 
 While holding down the boot button I runned the following command:  python -m esptool --chip esp32 --port COM4 write_flash -z 0x1000 esp32-20220618-v1.19.1.bin
 
+
+
+### Putting everything together
+ Circuit diagram (can be hand drawn) (Fritzing, Tinkercad, etc.)
+ Electrical calculations
+ Limitations of hardware depending on design choices.
+ Discussion about a way forward - is it possible to scale?
+ 
+ 
+### Platforms and infrastructure
+Describe your choice of platform(s). You need to describe how the IoT-platform works, and also the reasoning and motivation about your choices. Have you developed your own platform, or used
+
+Is your platform based on a local installation or a cloud? Do you plan to use a paid subscription or a free? Describe the different alternatives on going forward if you want to scale your idea.
+
+ Describe platform in terms of functionality
+ Explain and elaborate what made you choose this platform
+ Provide a pricing discussion. What are the prices for different platforms, and what are the pros and cons of using a low-code platform vs. developing yourself?
+The code
+Import core functions of your code here, and don't forget to explain what you have done. Do not put too much code here, focus on the core functionalities. Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks? Or, are you checking if the value is reasonable etc. Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
+
+import this as that
+
+def my_cool_function():
+    print('not much here')
+
+s.send(package)
+
+# Explain your code!
+
+
+### The physical network layer
+How is the data transmitted to the internet or local server? Describe the package format. All the different steps that are needed in getting the data to your end-point. Explain both the code and choice of wireless protocols.
+
+ How often is the data sent?
+ Which wireless protocols did you use (WiFi, LoRa, etc ...)?
+ Which transport protocols were used (MQTT, webhook, etc ...)
+ Elaborate on the design choices regarding data transmission and wireless protocols. That is how your choices affect the device range and battery consumption.
+ What alternatives did you evaluate?
+ What are the design limitations of your choices?
+
+
+### Visualisation and user interface
+Describe the presentation part. How is the dashboard built? How long is the data preserved in the database?
+
+ Provide visual examples on how the visualisation/UI looks. Pictures are needed.
+ How often is data saved in the database. What are the design choices?
+ Explain your choice of database. What kind of database. Motivate.
+ Automation/triggers of the data.
+ Alerting services. Are any used, what are the options and how are they in that case included.
+Finalizing the design
+Show the final results of your project. Give your final thoughts on how you think the project went. What could have been done in an other way, or even better? Pictures are nice!
+
+ Show final results of the project
+ Pictures
+ *Video presentation
