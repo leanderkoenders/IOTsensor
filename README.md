@@ -85,8 +85,54 @@ def connect():
     print('network config:', sta_if.ifconfig())
     
 connect()
-
 ```
+After that it will go to the main.py where it imports all the liberys:
+```
+from machine import Pin, I2C
+import ssd1306
+from hcsr04 import HCSR04
+from time import sleep
+from umqtt.simple import MQTTClient
+```
+Then it will subscribe to the MQTT:
+```
+CLIENT_NAME = 'leander'
+BROKER_ADDR = '172.16.2.7'
+mqttc = MQTTClient(CLIENT_NAME, BROKER_ADDR, keepalive=60)
+mqttc.connect()
+
+#topic
+BTN_TOPIC = 'Office/workstation/ONE/distance'
+```
+Then it will runs the rest of the code:
+```
+while True:
+  oled.fill(0)
+  
+  #oled.show()
+  distance = sensor.distance_mm()
+  print('Distance:', (distance), 'mm')
+  mqttc.publish( BTN_TOPIC, str(distance).encode() )
+  if distance == -1:
+      graph += "_"
+  elif distance < 150:
+      graph += "."
+  else:
+      graph += ":"
+ 
+  last_chars = graph[-15:]
+  print(graph)
+  
+  oled.text("Distance (mm)", 0, 15)
+  oled.text(str(distance), 0, 35)
+  oled.text(last_chars, 0, 55)
+  oled.show()
+  sleep(10)
+  
+  ```
+  
+
+
 
 Import core functions of your code here, and don't forget to explain what you have done. Do not put too much code here, focus on the core functionalities. Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks? Or, are you checking if the value is reasonable etc. Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
 
