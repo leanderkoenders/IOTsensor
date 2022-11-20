@@ -146,10 +146,22 @@ The ESP32 is connected to the Wi-Fi of our office and sends every 10 seconds a s
 > Figure 5
 
 The flow of the whole process looks like the folling one: 
+
 ![Flow](https://user-images.githubusercontent.com/118463424/202925803-9666755a-99c2-4112-8fe2-8c66838cd364.jpg)
 > Figure 6
 
 ### Visualisation and user interface
+First you need to create an app in Tulip. If you purchased a license then you can visit the [Tulip university](https://university.tulip.co/path/get-started) to learn how to build an app. When that is done you can create a "machine" for the sensor. Then you can connect Node red to the machine see in the next figure:
+
+![Node red](https://user-images.githubusercontent.com/118463424/202926579-2831c497-0eb8-41ba-be16-db86296d64ad.jpg)
+> Figure 7
+Then you 
+
+
+![MQTT in node red](https://user-images.githubusercontent.com/118463424/202926505-2785c147-8b0f-4eb8-be8f-a471a85bbd1b.jpg)
+
+![Tulip node red](https://user-images.githubusercontent.com/118463424/202926513-11549983-e4e5-43fd-82b0-bd608ee2f00f.jpg)
+
 Describe the presentation part. How is the dashboard built? How long is the data preserved in the database?
 
  Provide visual examples on how the visualisation/UI looks. Pictures are needed.
