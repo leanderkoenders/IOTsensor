@@ -32,7 +32,7 @@ Here below are the steps you need to follow to set up every thing.
 #### Installing
 First step was to install Thonney 4.0.1. After that installation of Python, when that was finished I installed the lattest stable esptool.py with the comand prompt:
 
-Pip install esptool 
+pip install esptool 
 
 After that you also need to install the setuptools, there for you use command: 
 
@@ -41,14 +41,19 @@ pip install setuptools
 At last one for this I filled in:
 
 python -m esptool
+
 #### MicroPython 
 First download the MicroPython firmware (esp32-20220618-v1.19.1.bin). After the downloading you need to find the serial port number, in my case I didn’t saw a COM port available what meant that I didn’t had a USB driver so I needed to install CP210x Universal windows driver. 
 Before the flashing the mircoPython firmware you need to erase the ESP32 flash memory. While holding down the boot button you need to runthe following command: 
-python -m esptool –-chip esp32 erase_flash.
+
+python -m esptool –-chip esp32 erase_flash
+
 When it was done you need to flash the MicroPython firmware to the ESP32. 
 For the following step you need to replace in the code my port (COM4) with your own port. 
 Then you need to hold down the boot butoon while you run the folling command:
+
 python -m esptool --chip esp32 --port COM4 write_flash -z 0x1000 esp32-20220618-v1.19.1.bin
+
 #### Tulip
 Tulip is a software where you can make apps that companies use in the facotry think about work instructions, machine monitoring, takt time, ect. You need to have a licence to have access to the tulip enviroment. If you bought the licenence then you need to install the Tulip Player and run the following app: Sensor. 
 
@@ -56,23 +61,23 @@ Tulip is a software where you can make apps that companies use in the facotry th
  All the devices are connected in the following figure:
  
  ![screenshot of schema](https://user-images.githubusercontent.com/118463424/202922113-1a82c0b5-393e-4d4b-a421-85e87eba3f38.jpg)
- Figure x
+
+Figure x
  
  The ESP32 is in the test set up powered by a powerbank. But because the powerbank had only a lifetime of 8 hours I decided that the device has to get the power supply of the workstation. This because otherwise someone is changing the battery every 8 hours and I wanted to have fixed instalation. The next plan is to scale from one sensor to 10 sensors at the workstation to see which of the positions need new material. Because there are a lot of pins not in use yet where we can connect sensors to. 
  
 ### Platforms and infrastructure
-Like discribed earlier the company where I work for (Virtual manufacturing) wanted to connect the sensor to Tulip. Tulip is an software platform where you can build apps. In my case the sensor is connected to an app that gives a signal to the light tower on top of the workstation to turn red. 
+Like discribed earlier the company where I work for (Virtual manufacturing) wanted to connect the sensor to Tulip. Tulip is an software platform where you can build apps. In my case the sensor is connected to an app that gives a signal to the light tower on top of the workstation to turn red. All the data get stored in the tables of Tulip, this is in the cloud. 
 The platform is cloud based and it is an paid subscription (if you want to have one license it cost about 24000 sek yearly). It is not suitable if you want to use the platform to connect it with the sensor because it is a lot of money. 
-A different 
+The intention of this project was focussed on replanishing the workstation with a signal so to look for an cheaper option I found the Blynk cloud platform. If the distance received from the sensor is bigger than x then Blynk can send out a signal to a mobile phone what can be carried by a warehouse employer.
 
-Describe your choice of platform(s). You need to describe how the IoT-platform works, and also the reasoning and motivation about your choices. Have you developed your own platform, or used
+### The code
+When the ESP32 is connected to the power supply the first thing it does it connecting to the Wi-Fi with the folling code:
+```
+Test
 
-Is your platform based on a local installation or a cloud? Do you plan to use a paid subscription or a free? Describe the different alternatives on going forward if you want to scale your idea.
+```
 
- Describe platform in terms of functionality
- Explain and elaborate what made you choose this platform
- Provide a pricing discussion. What are the prices for different platforms, and what are the pros and cons of using a low-code platform vs. developing yourself?
-The code
 Import core functions of your code here, and don't forget to explain what you have done. Do not put too much code here, focus on the core functionalities. Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks? Or, are you checking if the value is reasonable etc. Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
 
 import this as that
